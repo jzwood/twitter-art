@@ -1,15 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
+<head lang="en">
   <title>Twitter dell'arte</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-  {% if name %}
-    <h1>Hello {{ name }}!</h1>
-  {% else %}
-    <h1>Hello World!</h1>
-  {% endif %}
+  {% include 'header.html' ignore missing%}
+  {% block content %}{% endblock content %}
+  {% include 'footer.html' ignore missing%}
 </body>
 </html>

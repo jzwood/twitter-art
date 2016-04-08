@@ -1,7 +1,14 @@
-<!doctype html>
-<title>Hello from Flask</title>
-{% if name %}
-  <h1>Hello {{ name }}!</h1>
-{% else %}
-  <h1>Hello World!</h1>
-{% endif %}
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <ul id="navigation">
+    {% for item in data %}
+    <li>
+      <p>{{ item.timestamp }}
+        <br>
+        <a href="{{ item.handle }}">{{ item.text }}</a></li>
+      </p>
+      {% endfor %}
+    </ul>
+{% endblock content %}
