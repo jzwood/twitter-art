@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <title>Twitter dell'arte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  {% if name %}
+    <h1>Hello {{ name }}!</h1>
+  {% else %}
+    <h1>Hello World!</h1>
+  {% endif %}
+</body>
+</html>

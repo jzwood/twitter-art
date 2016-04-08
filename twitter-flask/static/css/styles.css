@@ -1,0 +1,16 @@
+a {
+  color: #fff2f2;
+  text-decoration: none; }
+
+  ul {
+    list-style-type: none; }
+
+    hr {
+      border: 1px solid #313236; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: white;
+        line-height: 60px; }

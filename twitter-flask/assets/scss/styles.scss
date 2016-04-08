@@ -1,0 +1,23 @@
+@import 'variables';
+
+a {
+  color: $textcol;
+  text-decoration: none;
+}
+
+ul{
+  list-style-type: none;
+}
+
+hr{
+  border: 1px solid $headercol;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  height: 100%;
+  background-color: white;
+  line-height: $headheight;
+
+}
