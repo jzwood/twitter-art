@@ -1,4 +1,21 @@
 @import 'variables';
+@import 'header';
+@import 'footer';
+
+
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  line-height: $headheight;
+
+}
+
+td{
+  display:inline-block;
+}
 
 a {
   color: $textcol;
@@ -11,13 +28,4 @@ ul{
 
 hr{
   border: 1px solid $headercol;
-}
-
-html,body{
-  margin:0;
-  padding:0;
-  height: 100%;
-  background-color: white;
-  line-height: $headheight;
-
 }

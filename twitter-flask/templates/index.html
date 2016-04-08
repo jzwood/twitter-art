@@ -1,14 +1,19 @@
 {% extends "layout.html" %}
-
 {% block content %}
 
-  <ul id="navigation">
+  <table>
     {% for item in data %}
-    <li>
-      <p>{{ item.timestamp }}
-        <br>
-        <a href="{{ item.handle }}">{{ item.text }}</a></li>
+    <tr>
+      <td>
+      <p>
+        {{ item.timestamp }} <a href="{{ item.handle }}"> {{ item.handle }}</a>
       </p>
+      </td>
+      <td>
+        {{ item.text }}
+      </td>
+      </li>
       {% endfor %}
-    </ul>
+    </tr>
+  </table>
 {% endblock content %}

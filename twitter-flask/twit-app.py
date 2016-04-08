@@ -10,34 +10,17 @@ app.config['DEBUG'] = True
 Scss(app, static_dir='static', asset_dir='assets')
 
 @app.route('/')
-def index():
-    # conn = sqlite3.connect('test_database.db')
-    # c = conn.cursor()
-    #
-    # data_stream = c.execute('''SELECT * FROM records''')
-    #
-    # x    = []
-    # down = []
-    # up   = []
-    # data = []
-    #
-    # for d in data_stream:
-    #     x.append(d[0])
-    #     down.append(d[1])
-    #     up.append(d[2])
-    #     data.append([format_datetime(d[0]), d[1], d[2]])
-    api = tw.authenticate()
-    results = tw.getJSONfromQuery('"you know that there are"',api,3)
-    # results = [{'text': 'Citizens should be free to speak without having to consult the @Tx_Ethics Comm or an election lawyer or file mind-boggling forms.', 'timestamp': '7:11:22PM Fri Apr 8 2016', 'handle': '@TweetTonyMac'},
-    #            {'text': "RT @PondsPH: Visit https://t.co/cfq3E29rrz to get your FREE beauty gift. Be one of the Philippines' most beautiful faces, with Pond's. @hel…", 'timestamp': '7:11:20PM Fri Apr 8 2016', 'handle': '@xilcabels'}]
+@app.route('/<info>')
+def index(info=None):
+
+    # api = tw.authenticate()
+    # results = tw.getJSONfromQuery('"you know that there are"',api,3)
+    results = [{'timestamp': '7:36:58PM Fri Apr 8 2016', 'text': "@JTerry_03 @CarlyMaiani same -- do it. It changes you in a million ways staying put won't.", 'handle': '@amandarporter'},
+                {'timestamp': '7:19:48PM Fri Apr 8 2016', 'text': 'So true &lt;3  "There is no way to be a perfect mother...but a million ways to be a good one." #JillChurchill https://t.co/AewRiFPyFD', 'handle': '@JacquelineRic1'},
+                {'timestamp': '7:18:53PM Fri Apr 8 2016', 'text': '@JustKamia lmao we think of. a million ways to get out tuition paid 😭😂', 'handle': '@CheckEmLikeNike'}]
     print(results)
 
-    return render_template('index.html', data=results)
-
-@app.route('/home/')
-@app.route('/home/<name>')
-def hello(name=None):
-    return render_template('hello.html', name=name)
+    return render_template('index.html', data=results, info=info)
 
 
 if __name__ == "__main__":
