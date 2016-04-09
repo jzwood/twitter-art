@@ -1,3 +1,7 @@
+/*
+  NOT USED !!!!!!!
+*/
+
 document.addEventListener( "DOMContentLoaded", ready, false )
 
 // window.onload = function(){
