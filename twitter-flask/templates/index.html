@@ -4,19 +4,17 @@
   <ul id="tweet-list">
     <li class="tweet-content">
       <div class="about-tweet">
-        <a href="https://twitter.com/"{{intro.handle}} target="_blank">@{{intro.handle}}</a> &bull; {{intro.now}}
+        <a href={{intro.handle}} target="_blank">@{{intro.handle}}</a> &bull; {{intro.now}}
       </div>
       <div class="tweet-text">
-        {{intro.instruct}}
+        {{intro.msg1}}
       </div>
     </li>
     <li class="tweet-content">
       <div class="about-tweet">
-        <a href="" target="_blank"> </a>
-        <!-- &bull; -->
+        <a href="" target="_blank"></a>
       </div>
-      <div class="tweet-text">
-      </div>
+      <div class="tweet-text">{{intro.msg2}}</div>
     </li>
   </ul>
 </div>

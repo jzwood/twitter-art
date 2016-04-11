@@ -1,4 +1,4 @@
-var player, tl, tweets, li0, li1;
+var player, tl, tweets, clock;
 console.log("json data here: ",jsondata);
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
@@ -21,13 +21,14 @@ function onYouTubeIframeAPIReady() {
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
   tl = new TimelineLite();
-  TweenLite.to(tl, 0, {timeScale:0})
-  var tweetText = document.querySelectorAll('.tweet-text');
-  li0 = tweetText[0];
-  li1 = tweetText[1];
+  tweets = document.querySelectorAll('.tweet-content');
   // tweets = document.querySelectorAll('.tweet-content');
-
+  startClockListener();
   console.log("Buffered and ready to play!");
+}
+
+function startClockListener(){
+  clock = setInterval(function(){ exeAnimation(0.25) }, 500);
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -38,15 +39,31 @@ function onPlayerStateChange(event) {
   pct = player.getCurrentTime();
 }
 
-function exeAnimation(time,margin){
-  anim = jsondata.filter(function(el){
-    return el.time < time && el.time > time - margin;
-  })[0];
+function exeAnimation(margin){
+  var time = player.getCurrentTime();
+
+  var anim = jsondata.filter(function(el){
+      return el.time <= time + margin && el.time >= time - margin;
+    })[0];
+
+  var formatAbout = function(name,date){
+    return '<a href="https://twitter.com/' + name + '" target="_blank">@' + name + '</a> &bull; '+ date;
+  }
+
+  var formatTweet = function(tweet,lyrics){
+    return tweet.replace(lyrics,'<span style="color:#F5D824">' +lyrics+'</span>');
+  }
+
   if(anim){
-    tl.set(li0, {opacity:0, rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
-    tl.set(li0, {opacity:0, rotationX: 180, rotationY: 0, transformOrigin:"0% 0% -50%"});
-    tl.to(tweetAbout, 2, {opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power4.easeOut});
-    tl.to(tweetOne, 1.5, {opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power1.easeOut}, "-=2");
+    console.log(anim, time);
+    var li = tweets[anim.li];
+    var about = li.getElementsByClassName('about-tweet'),
+    text = li.getElementsByClassName('tweet-text');
+
+    tl.set(about, {opacity:0, innerHTML:formatAbout(anim.tweet.handle,anim.tweet.timestamp), rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
+    tl.set(text, {opacity:0, innerHTML:formatTweet(anim.tweet.text,anim.lyrics.replace(/"/g,'')), rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
+    tl.to(about, 2, {opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power4.easeOut});
+    tl.to(text, 2, {opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power1.easeOut}, "-=2");
   }
 }
 

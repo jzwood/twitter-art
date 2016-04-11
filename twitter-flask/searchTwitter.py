@@ -28,7 +28,7 @@ def getJSONfromQuery(q_str,api,resp_num):
     #
     items = [a for a in r]
     #
-    handle = lambda i: '@' + items[int(i)]['user']['screen_name']
+    handle = lambda i: items[int(i)]['user']['screen_name']
     timestamp = lambda i: cleanDateString(items[int(i)]['created_at'])
     text = lambda i: items[int(i)]['text']
     #

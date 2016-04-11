@@ -7,7 +7,8 @@
     margin: 0;
     padding: 20px 0 0 0; }
 .footer {
-  width: 100%; }
+  width: 100%;
+  display: block; }
   .footer p {
     text-align: center; }
 html, body {
@@ -55,5 +56,6 @@ html, body {
         #video {
           width: 100%;
           text-align: center;
-          position: absolute;
+          position: relative;
+          display: block;
           z-index: 0; }
