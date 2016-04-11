@@ -25,7 +25,7 @@ def index(info=None):
             'timestamp': '2:58:52AM Tue Apr 5 2016',
             'handle': 'AmandaCerny'
         },
-        'time': 5,
+        'time': 8,
         'lyrics': '"sing out"'
     }, {
         'li': 1,
@@ -34,7 +34,7 @@ def index(info=None):
             'timestamp': '7:15:58PM Mon Apr 11 2016',
             'handle': 'mc_sarafina'
         },
-        'time': 6,
+        'time': 8.6,
         'lyrics': '"sing out"'
     }]
 
