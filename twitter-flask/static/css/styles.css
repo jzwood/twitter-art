@@ -46,8 +46,7 @@ html, body {
 
     .tweet-container {
       width: 100%;
-      min-width: 400px;
-      height: 75%;
+      min-width: 672px;
       overflow: hidden; }
 
       hr {
@@ -57,5 +56,4 @@ html, body {
           width: 100%;
           text-align: center;
           position: absolute;
-          top: 100px;
           z-index: 0; }

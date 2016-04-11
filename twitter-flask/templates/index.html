@@ -25,43 +25,13 @@
   <div id="player"></div>
 </div>
 <script>
-var ttt = {{ data|safe }};
-console.log("json data here: ",ttt);
-
-var tl;
-tl = new TimelineLite();
-var tweets = document.getElementById('tweet-list');
-//tweets = document.getElementById('tweet-list');
-var tweetOne = document.querySelectorAll('.tweet-text');
-var tweetAbout = document.querySelectorAll('.about-tweet');
-
-tl.set(tweetOne, {opacity:0, rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
-tl.set(tweetAbout, {opacity:0, rotationX: 180, rotationY: 0, transformOrigin:"0% 0% -50%"});
-
-window.addEventListener("keydown", handle, true);
-
-function handle(){
-  // var height = tweetOne[0].getBoundingClientRect().height * 1.5;
-  // tl.set(tweets, {y:height});
-  var newText = "Did you know that there are over 175,000 #youngcarers (5-18yrs) in the UK? Join us on @itvthismorning today where we'll be meeting some!";
-
-  tl.to(tweetAbout, 2, {opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power4.easeOut});
-  tl.to(tweetOne, 1.5, {opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power1.easeOut}, "-=2");
-
-  tl.to(tweetOne, 10, {opacity:1});
-
-  tl.to(tweetAbout, 2, {opacity:0, rotationX: -90, ease:Power4.easeOut});
-  tl.to(tweetOne, 2, {opacity:0, rotationX: -90, ease:Power4.easeOut}, "-=2");
-
-  tl.set(tweetOne, {opacity:0, innerText:newText, rotationX: 90, transformOrigin:"0% 0% -50%"});
-  tl.set(tweetAbout, {opacity:0, rotationX: 180, transformOrigin:"0% 0% -50%"});
-}
 // 2. This code loads the IFrame Player API code asynchronously.
-// var tag = document.createElement('script');
-// tag.src = "https://www.youtube.com/iframe_api";
-// var firstScriptTag = document.getElementsByTagName('script')[0];
-// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-// console.log("youtube script loaded");
+var jsondata = {{ data|safe }};
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+console.log("youtube script loaded");
 </script>
 
 {% endblock content %}

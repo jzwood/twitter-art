@@ -39,3 +39,11 @@ def getJSONfromQuery(q_str,api,resp_num):
         data.append({'handle':ha, 'timestamp':ti, "text": tx})
     #
     return data
+
+#e.g. (api, '"sing out"', [8,8.5], '01'), # which_li is int, 0 = top, 1 = bottom
+def lyric_logic(api,raw_lyrics,timing_array,which_li):
+    results = getJSONfromQuery(raw_lyrics, api, len(timing_array))
+    lyric_modules = []
+    for i,time in enumerate(timing_array):
+        lyric_modules.append({'lyrics':raw_lyrics, 'time':time, 'li':int(which_li[i]) ,'tweet':results[i]})
+    return lyric_modules
