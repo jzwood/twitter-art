@@ -17,12 +17,16 @@
         padding-left: 5%;
         padding-right: 5%;
         margin: 0; }
-        ul li {
-          padding-top: 2%;
-          padding-bottom: 2%;
-          z-index: 5;
-          overflow: hidden;
-          line-height: 1; }
+        @media screen and (max-width: 672px) {
+          ul {
+            font-size: 12pt;   }
+}
+          ul li {
+            padding-top: 2%;
+            padding-bottom: 2%;
+            z-index: 5;
+            overflow: hidden;
+            line-height: 1; }
 
   .about-tweet {
     color: #1DA1F2;
@@ -39,20 +43,30 @@
         min-width: 672px;
         overflow: hidden;
         height: 300px; }
+        @media screen and (max-width: 672px) {
+          .tweet-container {
+            min-width: 0;   }
+}
 
-        .color {
-          color: #F8CB37; }
+  .color {
+    color: #F8CB37; }
 
-          hr {
-            border: 1px solid #313236; }
+    hr {
+      border: 1px solid white; }
 
-            #video {
-              width: 100%;
-              text-align: center;
-              position: relative;
-              display: block;
-              z-index: 0;
-              background-color: black; }
+      #video {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        display: block;
+        z-index: 0;
+        background-color: black; }
+        #video #player {
+          width: 672px; }
+          @media screen and (max-width: 672px) {
+            #video #player {
+              width: 100%;   }
+}
 .heading {
   width: 100%;
   margin: 0;

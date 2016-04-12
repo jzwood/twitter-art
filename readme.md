@@ -2,7 +2,7 @@
 
 ## get from git ##
 `git clone https://github.com/jzwood/twitter-art.git`
-` cd twitter-art`
+`cd twitter-art`
 
 ## install dependecies ##
 

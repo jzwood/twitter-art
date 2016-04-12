@@ -1,17 +1,7 @@
-
-
-//colors
-$headercol: #313236;
-
-$linkcolor: #5c9bdb;
-
-//header info
-$headheight: 60px;
-$headlineratio: 0.4;
+$headercol: white;
 
 //mobile breakpoint
-$mobile-brk-pnt: 800px;
-$desk-brk-pnt: 800px;
+$breakpoint: 672px;
 
 //footer height
 $footheight: 50px;
@@ -19,3 +9,7 @@ $footheight: 50px;
 //new variables
 $twitter-color: #1DA1F2;
 $textcol: black;
+
+//font
+$mob-font-size: 12pt;
+$desk-font-size: 18pt;
