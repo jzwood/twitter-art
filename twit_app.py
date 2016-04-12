@@ -34,7 +34,7 @@ def index(info=None):
         "msg1":'Experience the wisdom of Cat Stevens through live tweets.'
         }
     header="If you want to..."
-    foot="Footer"
+    foot="a simple web app brought to you by jake"
 
     return render_template('index.html', data=mode, safeData=json.dumps(mode),
     intro=intro, header=header, foot=foot, info=info)
