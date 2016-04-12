@@ -1,5 +1,6 @@
-var player, tweets;
-console.log("json data here: ",jsondata);
+var player, tweets, timeouts = [];
+
+console.log("json data: ",jsondata);
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 function onYouTubeIframeAPIReady() {
@@ -26,26 +27,37 @@ function startClock(){
   setTimeout(function(){ scheduleAnimations(); }, 2000);
 }
 
+function stopClock(){
+  for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+  }
+  //quick reset of the timer array you just cleared
+  timeouts = [];
+  }
+
 function onPlayerStateChange(event) {
   var ps = player.getPlayerState()
   pct = player.getCurrentTime();
-  if(ps === 1 && pct < 2){
+  if(ps === 1){
     startClock();
+  }else if(ps === 2){
+    stopClock();
   }
 }
 
 function scheduleAnimations(){
+  var ct = player.getCurrentTime();
   for(var anim in jsondata){
-    //console.log(jsondata[anim]);
-    animate(jsondata[anim]);
+    if(ct < jsondata[anim].time)
+      animate(jsondata[anim],ct);
   }
   // var anim = jsondata.filter(function(el){
   //     return el.time <= time + margin && el.time >= time - margin;
   //   })[0];
 }
 
-function animate(li_data){
-  setTimeout(function(){
+function animate(li_data,currentTime){
+  timeouts.push(setTimeout(function(){
     var formatAbout = function(name,date){
       return '<a href="https://twitter.com/' + name + '" target="_blank">@' + name + '</a> &bull; '+ date;
     }
@@ -71,31 +83,5 @@ function animate(li_data){
     tl.to(about, 2, {innerHTML: newabout, opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power4.easeOut});
     tl.to(text, 2, {innerHTML: newtext, opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power1.easeOut}, "-=2");
 
-  }, 1000 * (li_data.time - player.getCurrentTime()));
+  }, 1000 * (li_data.time - currentTime)));
 }
-
-
-// var tweets = document.getElementById('tweet-list');
-// //tweets = document.getElementById('tweet-list');
-// var tweetAbout = document.querySelectorAll('.about-tweet');
-//
-
-//
-// window.addEventListener("keydown", handle, true);
-//
-// function handle(){
-//   // var height = tweetOne[0].getBoundingClientRect().height * 1.5;
-//   // tl.set(tweets, {y:height});
-//   var newText = "Did you know that there are over 175,000 #youngcarers (5-18yrs) in the UK? Join us on @itvthismorning today where we'll be meeting some!";
-//
-//   tl.to(tweetAbout, 2, {opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power4.easeOut});
-//   tl.to(tweetOne, 1.5, {opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power1.easeOut}, "-=2");
-//
-//   tl.to(tweetOne, 10, {opacity:1});
-//
-//   tl.to(tweetAbout, 2, {opacity:0, rotationX: -90, ease:Power4.easeOut});
-//   tl.to(tweetOne, 2, {opacity:0, rotationX: -90, ease:Power4.easeOut}, "-=2");
-//
-//   tl.set(tweetOne, {opacity:0, innerText:newText, rotationX: 90, transformOrigin:"0% 0% -50%"});
-//   tl.set(tweetAbout, {opacity:0, rotationX: 180, transformOrigin:"0% 0% -50%"});
-// }
