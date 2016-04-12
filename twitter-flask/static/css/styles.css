@@ -48,14 +48,19 @@ html, body {
     .tweet-container {
       width: 100%;
       min-width: 672px;
-      overflow: hidden; }
+      overflow: hidden;
+      height: 300px; }
 
-      hr {
-        border: 1px solid #313236; }
+      .color {
+        color: #F8CB37; }
 
-        #video {
-          width: 100%;
-          text-align: center;
-          position: relative;
-          display: block;
-          z-index: 0; }
+        hr {
+          border: 1px solid #313236; }
+
+          #video {
+            width: 100%;
+            text-align: center;
+            position: relative;
+            display: block;
+            z-index: 0;
+            background-color: black; }

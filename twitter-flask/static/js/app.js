@@ -50,8 +50,8 @@ function animate(li_data){
       return '<a href="https://twitter.com/' + name + '" target="_blank">@' + name + '</a> &bull; '+ date;
     }
 
-    var formatTweet = function(tweet,lyrics){
-      return tweet.replace(lyrics,'<span style="color:#F5D824">' +lyrics+'</span>');
+    var formatTweet = function(tweet,lyrics,reLyrics){
+      return tweet.replace(reLyrics,'<span class="color">' +lyrics+'</span>');
     }
 
     //console.log(li_data);
@@ -60,16 +60,17 @@ function animate(li_data){
     var about = li.getElementsByClassName('about-tweet')[0],
     text = li.getElementsByClassName('tweet-text')[0];
 
-    var newabout = formatAbout(li_data.tweet.handle,li_data.tweet.timestamp),
-    newtext = li_data.tweet.text;//formatTweet(li_data.tweet.text,li_data.lyrics.replace(/"/g,''));
-    console.log(newabout,newtext)
+    var newabout = formatAbout(li_data.tweet.handle,li_data.tweet.timestamp);
+    var lyric = li_data.lyrics.replace(/"/g,'');
+    newtext = formatTweet(li_data.tweet.text,lyric, new RegExp(lyric,'gi'));
 
     var tl = new TimelineLite();
-    
+
     tl.set(about, {innerHTML: newabout, opacity: 0, rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
     tl.set(text, {innerHTML: newtext, opacity:0, rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
     tl.to(about, 2, {innerHTML: newabout, opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power4.easeOut});
     tl.to(text, 2, {innerHTML: newtext, opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power1.easeOut}, "-=2");
+
   }, 1000 * (li_data.time - player.getCurrentTime()));
 }
 

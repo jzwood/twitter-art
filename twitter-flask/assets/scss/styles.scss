@@ -50,6 +50,11 @@ ul{
   min-width: 672px;
   // height: 75%;
   overflow: hidden;
+  height: 300px;
+}
+
+.color{
+  color:#F8CB37;
 }
 
 hr{
@@ -59,10 +64,10 @@ hr{
 #video{
   width:100%;
   text-align: center;
-  position: relative;
+  position: relative;;
   display: block;
-  // top: 100px;
   z-index: 0;
+  background-color: black;
   // iframe{
   //   text-align: center;
   // }
