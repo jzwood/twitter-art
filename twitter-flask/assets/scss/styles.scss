@@ -8,7 +8,7 @@ html,body{
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: #F5F8FA;
   font-family: Helvetica;//'Inconsolata';
 }
 
@@ -22,6 +22,8 @@ ul{
   font-size: 18pt;
   padding-left: 5%;
   padding-right: 5%;
+  margin:0;
+  
   li{
     // padding:0;
     // margin:0;
