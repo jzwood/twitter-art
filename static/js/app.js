@@ -78,10 +78,14 @@ function animate(li_data,currentTime){
 
     var tl = new TimelineLite();
 
-    tl.set(about, {innerHTML: newabout, opacity: 0, rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
-    tl.set(text, {innerHTML: newtext, opacity:0, rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
-    tl.to(about, 2, {innerHTML: newabout, opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power4.easeOut});
-    tl.to(text, 2, {innerHTML: newtext, opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power1.easeOut}, "-=2");
+    // tl.set(about, {innerHTML: newabout, opacity: 0, rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
+    // tl.set(text, {innerHTML: newtext, opacity:0, rotationX: 90, rotationY: 0, transformOrigin:"0% 0% -50%"});
+    // tl.to(about, 2, {innerHTML: newabout, opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power4.easeOut});
+    // tl.to(text, 2, {innerHTML: newtext, opacity:1, rotationX: 0, rotationY: 0, transformOrigin:"0% 0% 0%",ease:Power1.easeOut}, "-=2");
+    tl.set(about, {innerHTML: newabout, opacity: 0});
+    tl.set(text, {innerHTML: newtext, opacity:0});
+    tl.to(about, 3, {innerHTML: newabout, opacity:1,ease:Power4.easeOut});
+    tl.to(text, 3, {innerHTML: newtext, opacity:1,ease:Power1.easeOut}, "-=2.8");
 
-  }, 1000 * (li_data.time - currentTime)));
+  }, 1000 * (li_data.time - currentTime - 1)));
 }
